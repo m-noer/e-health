@@ -9,6 +9,14 @@
     },
     {
         "id": 2,
+        "nama": "Dr Stemi",
+        "status": "online",
+        "bidang": "Dokter Gigi",
+        "alamat": "Jalan Parangrtritis KM.20",
+        "foto": "http://d3t543lkaz1xy.cloudfront.net/photo/562739d7c98121d274124a1f_m"
+    },
+    {
+        "id": 3,
         "nama": "Dr Fildza Hasnamudi",
         "status": "online",
         "bidang": "Dokter Umum",
@@ -16,7 +24,7 @@
         "foto": "https://media-spiceee.net/uploads/content/image/2321725/large_66be0bfe-7a8c-4883-90cb-f5ea8216a66a.jpg"
     },
     {
-        "id": 3,
+        "id": 4,
         "nama": "Dr Samuel Stemi",
         "status": "online",
         "bidang": "Dokter Gigi",
