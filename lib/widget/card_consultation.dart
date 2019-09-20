@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare/widget/category_page.dart';
-import 'package:healthcare/widget/chat_page.dart';
 import 'package:healthcare/widget/transition.dart';
 
 class CardConsultation extends StatelessWidget {

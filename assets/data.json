@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nama": "Dr Sitti Ashari",
+        "status": "online",
+        "bidang": "Dokter Umum",
+        "alamat": "Jalan Parangrtritis KM.20",
+        "foto": "https://akcdn.detik.net.id/community/media/visual/2019/04/21/60930db4-b0a2-4033-aeec-b2e1ead64a0a.jpeg?w=770&q=902"
+    },
+    {
+        "id": 2,
+        "nama": "Fildza Hasnamudi",
+        "status": "online",
+        "bidang": "Dokter Umum",
+        "alamat": "Jalan Parangrtritis KM.25",
+        "foto": "https://media-spiceee.net/uploads/content/image/2321725/large_66be0bfe-7a8c-4883-90cb-f5ea8216a66a.jpg"
+    },
+    {
+        "id": 3,
+        "nama": "Dr Samuel Stemi",
+        "status": "offline",
+        "bidang": "Dokter Umum",
+        "alamat": "Jalan Parangrtritis KM.20",
+        "foto": "http://d3t543lkaz1xy.cloudfront.net/photo/562739d7c98121d274124a1f_m"
+    }
+]
