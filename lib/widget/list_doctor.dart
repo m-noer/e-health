@@ -6,6 +6,10 @@ import 'package:healthcare/widget/cardlist.dart';
 import 'package:http/http.dart' as http;
 
 class ListDoctor extends StatefulWidget {
+  const ListDoctor({Key key, this.category});
+
+  final String category;
+
   @override
   _ListDoctorState createState() => _ListDoctorState();
 }
@@ -72,15 +76,19 @@ class _ListDoctorState extends State<ListDoctor> {
               child: ListView.builder(
                 itemCount: _profile == null ? 0 : _profile.length,
                 itemBuilder: (context, i) {
-                  return CardList(
-                    name: _profile[i].nama,
-                    status: _profile[i].status,
-                    image: _profile[i].foto,
-                    spesialization: _profile[i].bidang,
-                    totalReview: 20,
-                    distance: 1.2,
-                    address: _profile[i].alamat,
-                  );
+                  if (_profile[i].bidang == widget.category) {
+                    return CardList(
+                      name: _profile[i].nama,
+                      status: _profile[i].status,
+                      image: _profile[i].foto,
+                      spesialization: _profile[i].bidang,
+                      totalReview: 20,
+                      distance: 1.2,
+                      address: _profile[i].alamat,
+                    );
+                  } else {
+                    return Container();
+                  }
                 },
               ),
             ),

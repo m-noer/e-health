@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthcare/widget/payment.dart';
 import 'package:healthcare/widget/rating.dart';
 import 'package:healthcare/widget/transition.dart';

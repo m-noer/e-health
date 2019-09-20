@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:healthcare/widget/card_consultation.dart';
 import 'package:healthcare/widget/category_page.dart';
 import 'package:healthcare/widget/chat_page.dart';
-import 'package:healthcare/widget/profilePage.dart';
 
 void main() {
   runApp(MyApp());

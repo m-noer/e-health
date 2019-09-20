@@ -22,7 +22,12 @@ class CategoryDoctor extends StatelessWidget {
           color: Colors.white,
           elevation: 2,
           onPressed: () {
-            Navigator.push(context, SlideRightRoute(page: ListDoctor()));
+            Navigator.push(
+                context,
+                SlideRightRoute(
+                    page: ListDoctor(
+                  category: category,
+                )));
           },
           child: Column(
             children: <Widget>[
