@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:healthcare/model/profile_doctor.dart';
 import 'dart:async' show Future;
 import 'dart:convert';
@@ -16,7 +14,7 @@ class _ListDoctorState extends State<ListDoctor> {
   List<ProfileDoctor> _profile = List<ProfileDoctor>();
 
   Future<List<ProfileDoctor>> fetchProfile() async {
-    var url = 'https://m-noer.github.io/laporin/data.json';
+    var url = 'https://m-noer.github.io/e-health/assets/data.json';
     var response = await http.get(url);
 
     var profiles = List<ProfileDoctor>();

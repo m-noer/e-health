@@ -3,6 +3,15 @@ import 'package:healthcare/widget/chat_page.dart';
 import 'package:healthcare/widget/transition.dart';
 
 class Payment extends StatelessWidget {
+  const Payment(
+      {Key key, this.name, this.image, this.status, this.spesialization})
+      : super(key: key);
+
+  final String name;
+  final String image;
+  final String status;
+  final String spesialization;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +49,7 @@ class Payment extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: new BorderRadius.all(Radius.circular(200)),
                       image: DecorationImage(
-                          image: NetworkImage(
-                              "https://akcdn.detik.net.id/community/media/visual/2019/04/21/60930db4-b0a2-4033-aeec-b2e1ead64a0a.jpeg?w=770&q=90"),
-                          fit: BoxFit.cover),
+                          image: NetworkImage(image), fit: BoxFit.cover),
                     ),
                   ),
                   SizedBox(
@@ -53,7 +60,7 @@ class Payment extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Dr. Sitti Ashari",
+                        name,
                         style: TextStyle(
                             color: Colors.grey[700],
                             fontSize: 20.0,
@@ -61,7 +68,7 @@ class Payment extends StatelessWidget {
                             wordSpacing: 1.0),
                       ),
                       Text(
-                        "Dokter Umum",
+                        spesialization,
                         style: TextStyle(
                           color: Colors.grey[400],
                           fontSize: 18.0,
@@ -214,7 +221,14 @@ class Payment extends StatelessWidget {
               child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Navigator.push(context, SlideRightRoute(page: Chat()));
+                  Navigator.push(
+                      context,
+                      SlideRightRoute(
+                          page: Chat(
+                        name: name,
+                        image: image,
+                        status: status,
+                      )));
                 },
                 child: Text("BAYAR DAN KONFIRMASI"),
                 color: Colors.blue,

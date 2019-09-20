@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthcare/widget/payment.dart';
+import 'package:healthcare/widget/rating.dart';
 import 'package:healthcare/widget/transition.dart';
 
 class CardList extends StatelessWidget {
@@ -41,8 +43,8 @@ class CardList extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     Container(
-                      height: 105,
-                      width: 105,
+                      height: 100.0,
+                      width: 100.0,
                       decoration: BoxDecoration(
                         // border: Border.all(color: Colors.white),
                         borderRadius:
@@ -98,40 +100,9 @@ class CardList extends StatelessWidget {
                       height: 4.0,
                     ),
                     Container(
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.star,
-                            color: Colors.amberAccent,
-                            size: 18.0,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.amberAccent,
-                            size: 18.0,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.amberAccent,
-                            size: 18.0,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.amberAccent,
-                            size: 18.0,
-                          ),
-                          Icon(
-                            Icons.star_half,
-                            color: Colors.amberAccent,
-                            size: 18.0,
-                          ),
-                          Text(
-                            "($totalReview) \u00B7 $distance mi",
-                            style: TextStyle(
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                        ],
+                      child: Rating(
+                        totalReview: totalReview,
+                        distance: distance,
                       ),
                     ),
                     SizedBox(
@@ -169,8 +140,25 @@ class CardList extends StatelessWidget {
                           child: RaisedButton(
                             elevation: 0,
                             onPressed: () {
-                              Navigator.push(
-                                  context, SlideRightRoute(page: Payment()));
+                              if (status == "online") {
+                                Navigator.push(
+                                  context,
+                                  SlideRightRoute(
+                                    page: Payment(
+                                      name: name,
+                                      image: image,
+                                      status: status,
+                                      spesialization: spesialization,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text(
+                                      'Kami akan mengirimkan notifikasi saat dokter $name online'),
+                                  duration: Duration(seconds: 3),
+                                ));
+                              }
                             },
                             child: status == "online"
                                 ? Text("CHAT")

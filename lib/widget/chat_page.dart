@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:healthcare/widget/cardlist.dart';
+import 'package:healthcare/widget/category_page.dart';
+import 'package:healthcare/widget/transition.dart';
 import 'package:image_picker/image_picker.dart';
 
 //TCP SOCKET
@@ -9,6 +12,12 @@ import 'package:async/async.dart';
 // import 'package:flutter_socket_io/flutter_socket_io.dart';
 
 class Chat extends StatefulWidget {
+  const Chat({Key key, this.name, this.image, this.status}) : super(key: key);
+
+  final String name;
+  final String image;
+  final String status;
+
   @override
   _ChatState createState() => _ChatState();
 }
@@ -43,6 +52,18 @@ class _ChatState extends State<Chat> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.only(left: 12),
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(context, SlideRightRoute(page: CategoryPage()));
+            },
+          ),
+        ),
         title: Row(
           children: <Widget>[
             Container(
@@ -53,8 +74,7 @@ class _ChatState extends State<Chat> {
                 borderRadius: BorderRadius.circular(50.0),
                 color: Colors.white,
                 image: DecorationImage(
-                  image: NetworkImage(
-                      "https://akcdn.detik.net.id/community/media/visual/2019/04/21/60930db4-b0a2-4033-aeec-b2e1ead64a0a.jpeg?w=770&q=90"),
+                  image: NetworkImage(widget.image),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,7 +84,7 @@ class _ChatState extends State<Chat> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Dr. Sitti Ashari",
+                  widget.name,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -72,7 +92,7 @@ class _ChatState extends State<Chat> {
                   ),
                 ),
                 Text(
-                  "Online",
+                  widget.status,
                   style: TextStyle(
                     color: Colors.grey[100],
                     fontSize: 14.0,
