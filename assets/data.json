@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "nama": "Fildza Hasnamudi",
+        "nama": "Dr Fildza Hasnamudi",
         "status": "online",
         "bidang": "Dokter Umum",
         "alamat": "Jalan Parangrtritis KM.25",
@@ -18,7 +18,7 @@
     {
         "id": 3,
         "nama": "Dr Samuel Stemi",
-        "status": "offline",
+        "status": "online",
         "bidang": "Dokter Gigi",
         "alamat": "Jalan Parangrtritis KM.20",
         "foto": "http://d3t543lkaz1xy.cloudfront.net/photo/562739d7c98121d274124a1f_m"
