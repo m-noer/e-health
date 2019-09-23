@@ -12,8 +12,8 @@ class CategoryDoctor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(top: 20.0),
-        height: 100,
-        width: 100,
+        height: 102,
+        width: 102,
         child: RaisedButton(
           padding: EdgeInsets.all(10.0),
           hoverColor: Colors.blue,
@@ -34,6 +34,7 @@ class CategoryDoctor extends StatelessWidget {
               Container(
                 height: 50,
                 width: 50,
+                margin: EdgeInsets.only(bottom: 2.0),
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(icon),
@@ -42,7 +43,6 @@ class CategoryDoctor extends StatelessWidget {
               ),
               Text(
                 category,
-                softWrap: true,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,

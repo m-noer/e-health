@@ -31,7 +31,7 @@ class CardConsultation extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(top: 10.0),
-            height: 200.0,
+            height: 210.0,
             width: double.infinity,
             padding: EdgeInsets.all(26.0),
             decoration: BoxDecoration(

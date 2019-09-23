@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare/widget/category_doctor.dart';
+import 'package:healthcare/widget/custom_appbar.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        title: Center(
-          child: Text("Konsultasi"),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.history),
-            onPressed: () {},
-          )
-        ],
-      ),
+      appBar: CustomAppBar(),
       body: ListView(
         children: <Widget>[
           Padding(

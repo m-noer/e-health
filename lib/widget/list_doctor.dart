@@ -3,6 +3,7 @@ import 'package:healthcare/model/profile_doctor.dart';
 import 'dart:async' show Future;
 import 'dart:convert';
 import 'package:healthcare/widget/cardlist.dart';
+import 'package:healthcare/widget/custom_appbar.dart';
 import 'package:http/http.dart' as http;
 
 class ListDoctor extends StatefulWidget {
@@ -45,29 +46,7 @@ class _ListDoctorState extends State<ListDoctor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        title: Center(
-          child: Text("Dokter"),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          )
-        ],
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[

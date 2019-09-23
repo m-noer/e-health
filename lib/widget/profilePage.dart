@@ -1,232 +1,259 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import 'package:healthcare/widget/custom_appbar.dart';
+import 'package:timeline_list/timeline.dart';
+import 'package:timeline_list/timeline_model.dart';
 
-class AccountPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[ProfileInfo(), DetailInfo(), HistorySick()],
-      ),
-    );
-  }
-}
-
-class DetailInfo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                infoAja(
-                  Icons.date_range,
-                  "Age",
-                  "20",
-                ),
-                infoAja(
-                  Icons.favorite,
-                  'Darah',
-                  "B",
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new infoAja(Icons.favorite, 'Tinggi', '180'),
-                new infoAja(Icons.memory, 'berat', '10 kg')
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class infoAja extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
-  const infoAja(
-    this.icon,
-    this.label,
-    this.value, {
+class ProfilDokter extends StatelessWidget {
+  ProfilDokter({
     Key key,
+    this.name,
+    this.image,
+    this.spesialization,
   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      child: Row(
-        children: <Widget>[
-          Container(
-            height: 50.0,
-            width: 50.0,
-            child: Icon(this.icon),
-            decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
-              shape: BoxShape.circle,
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 10.0, top: 0.0),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    this.label,
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-                Container(child: Text(this.value))
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+  final String name;
+  final String image;
+  final String spesialization;
 
-class ProfileInfo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 90.0,
-              width: 90.0,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          "https://upload.wikimedia.org/wikipedia/commons/5/53/Gerard_Butler_%2829681162176%29.jpg"))),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Text(
-                  'Erman Junaidi',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-              ),
-            ),
-            Container(
-              child: Text(
-                'Semarang',
-                style: TextStyle(fontSize: 15),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+  final GlobalKey<AnimatedCircularChartState> _chartKey =
+      new GlobalKey<AnimatedCircularChartState>();
 
-class HistorySick extends StatelessWidget {
+  final List<CircularStackEntry> data = <CircularStackEntry>[
+    new CircularStackEntry(
+      <CircularSegmentEntry>[
+        new CircularSegmentEntry(600.0, Colors.red[300], rankKey: 'Q1'),
+        new CircularSegmentEntry(1000.0, Colors.pink[50], rankKey: 'Q2'),
+      ],
+      rankKey: 'Quarterly Profits',
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          child: Text(
-            'Riwayat Penyakit',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: CustomAppBar(),
+        body: SafeArea(
           child: Container(
-            child: Row(
+            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: NetworkImage(image),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Text(spesialization),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Container(
-                        height: 80.0,
-                        width: 150.0,
-                        decoration: BoxDecoration(
-                            color: Colors.indigo,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'Sakit Gigi',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text('Dr. Vega',
-                                  style: TextStyle(color: Colors.white)),
-                              Text(
-                                'Cabut Semua Gigi',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 10.0),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                      Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      )
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        height: 80.0,
-                        width: 150.0,
-                        decoration: BoxDecoration(
-                            color: Colors.indigo,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'Sakit Kepala',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
+                                color: Colors.pink[100],
                               ),
-                              Text('Dr. Agung',
-                                  style: TextStyle(color: Colors.white)),
-                              Text(
-                                'Pijat Kepala',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 10.0),
-                              )
+                              padding: EdgeInsets.all(5),
+                              width: 170,
+                              height: 45,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text(
+                                    'Ruangan :',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                  Text(
+                                    '70/90',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                  Container(
+                                      child: new AnimatedCircularChart(
+                                    key: _chartKey,
+                                    size: Size(60.0, 60.0),
+                                    initialChartData: data,
+                                    chartType: CircularChartType.Radial,
+                                    holeRadius: 7,
+                                  ))
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
+                                color: Colors.orange[100],
+                              ),
+                              padding: EdgeInsets.all(5),
+                              width: 150,
+                              height: 45,
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    'Pasien minggu ini',
+                                    style: TextStyle(color: Colors.orange[300]),
+                                  ),
+                                  Text(
+                                    '70',
+                                    style: TextStyle(
+                                        color: Colors.orange[300],
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10),
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10)),
+                                  color: Colors.green[100],
+                                ),
+                                padding: EdgeInsets.all(5),
+                                width: 150,
+                                height: 45,
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      'Jam Praktik',
+                                      style:
+                                          TextStyle(color: Colors.green[300]),
+                                    ),
+                                    Text(
+                                      '17.00-23.00 WIB',
+                                      style: TextStyle(
+                                          color: Colors.green[300],
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10),
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10)),
+                                  color: Colors.purple[100],
+                                ),
+                                padding: EdgeInsets.all(5),
+                                width: 150,
+                                height: 45,
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      'Riwayat Praktik',
+                                      style:
+                                          TextStyle(color: Colors.purple[300]),
+                                    ),
+                                    Text(
+                                      '2010 - Sekarang',
+                                      style: TextStyle(
+                                          color: Colors.purple[300],
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                      ),
-                    ],
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: Text(
+                            'Jadwal Praktek dr.Cindy Amelia',
+                            style: TextStyle(
+                                color: Colors.blue[300],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                        ),
+                        Container(
+                          child: Expanded(
+                            child: Timeline.builder(
+                              itemBuilder: (BuildContext context, int i) {
+                                return TimelineModel(
+                                  Container(
+                                    height: 133,
+                                    width: 150,
+                                    margin: EdgeInsets.fromLTRB(30, 10, 0, 0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text(
+                                          '09.00-13.00',
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                        Text('Rs.Condongcatur'),
+                                      ],
+                                    ),
+                                  ),
+                                  iconBackground: Colors.green,
+                                );
+                              },
+                              position: TimelinePosition.Left,
+                              itemCount: 5,
+                              physics: BouncingScrollPhysics(),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
             ),
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

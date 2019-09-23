@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare/widget/chat_page.dart';
+import 'package:healthcare/widget/custom_appbar.dart';
 import 'package:healthcare/widget/transition.dart';
 
 class Payment extends StatelessWidget {
@@ -16,21 +17,7 @@ class Payment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        leading: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        title: Text("Pembayaran"),
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[

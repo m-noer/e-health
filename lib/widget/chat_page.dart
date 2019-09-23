@@ -52,12 +52,14 @@ class _ChatState extends State<Chat> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        elevation: 2,
+        backgroundColor: Colors.white,
         leading: Padding(
           padding: EdgeInsets.only(left: 12),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back,
-              color: Colors.white,
+              color: Colors.blue,
             ),
             onPressed: () {
               Navigator.push(context, SlideRightRoute(page: CategoryPage()));
@@ -72,7 +74,7 @@ class _ChatState extends State<Chat> {
               margin: EdgeInsets.only(right: 10.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
-                color: Colors.white,
+                color: Colors.blue,
                 image: DecorationImage(
                   image: NetworkImage(widget.image),
                   fit: BoxFit.cover,
@@ -86,7 +88,7 @@ class _ChatState extends State<Chat> {
                 Text(
                   widget.name,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black87,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w400,
                   ),
@@ -94,7 +96,7 @@ class _ChatState extends State<Chat> {
                 Text(
                   widget.status,
                   style: TextStyle(
-                    color: Colors.grey[100],
+                    color: Colors.grey,
                     fontSize: 14.0,
                     fontWeight: FontWeight.w400,
                   ),

@@ -3,6 +3,8 @@ import 'package:healthcare/widget/payment.dart';
 import 'package:healthcare/widget/rating.dart';
 import 'package:healthcare/widget/transition.dart';
 
+import 'profilePage.dart';
+
 class CardList extends StatelessWidget {
   const CardList(
       {Key key,
@@ -120,7 +122,18 @@ class CardList extends StatelessWidget {
                           height: 30.0,
                           child: RaisedButton(
                             elevation: 0,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                SlideRightRoute(
+                                  page: ProfilDokter(
+                                    name: name,
+                                    image: image,
+                                    spesialization: spesialization,
+                                  ),
+                                ),
+                              );
+                            },
                             child: Text("Profile"),
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
